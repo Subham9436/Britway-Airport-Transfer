@@ -11,6 +11,7 @@ export function Card() {
       </div>
       <div>
         <BookingForm />
+        <h3 className="text-4xl mt-2">Available Vehicles :</h3>
         <VehicleList />
       </div>
     </div>

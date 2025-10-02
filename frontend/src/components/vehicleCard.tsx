@@ -24,11 +24,11 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
   const isSelected = selectedId === vehicle.id;
 
   return (
-    <div className="border rounded-lg shadow-md overflow-hidden mb-6">
+    <div className="border-zinc-950  rounded-lg shadow-md overflow-hidden mb-6">
       <div className="grid grid-cols-3 gap-4 p-4">
         {/* Car Image */}
         <div className="col-span-1 flex items-center justify-center">
-          <img src={vehicle.image} alt={vehicle.name} className="w-32 h-20 object-contain" />
+          <img src={vehicle.image} alt={vehicle.name} className="w-32 h-20 object-contain border" />
         </div>
 
         {/* Vehicle Details */}
