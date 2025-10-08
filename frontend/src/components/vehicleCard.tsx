@@ -24,11 +24,11 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
   const isSelected = selectedId === vehicle.id;
 
   return (
-    <div className="border-zinc-950  rounded-lg shadow-md overflow-hidden mb-6">
+    <div className="border border-gray-300  rounded-lg shadow-md overflow-hidden mb-6">
       <div className="grid grid-cols-3 gap-4 p-4">
         {/* Car Image */}
         <div className="col-span-1 flex items-center justify-center">
-          <img src={vehicle.image} alt={vehicle.name} className="w-32 h-20 object-contain border" />
+          <img src={vehicle.image} alt={vehicle.name} className=" size-72 object-contain" />
         </div>
 
         {/* Vehicle Details */}
@@ -40,6 +40,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
                 isSelected ? "bg-green-600" : "bg-red-600"
               }`}
               onClick={() => onSelect(vehicle.id)}
+              style={{ cursor: "pointer" }}
             >
               {isSelected ? "Selected" : "Select Vehicle"}
             </button>
@@ -66,7 +67,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
 
           {/* Pricing */}
           <div className="mt-3">
-            <div className="flex justify-between items-center border-t py-2">
+            <div className="flex justify-between items-center  py-2">
               <span>One way</span>
               <span className="font-bold">£{vehicle.oneWayPrice}</span>
             </div>
