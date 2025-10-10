@@ -1,5 +1,6 @@
 import VehicleList from "../constants";
 import BookingForm from "./bookingform";
+import { Extra } from "./extra";
 
 export function Card() {
   return (
@@ -14,7 +15,7 @@ export function Card() {
         <h3 className="text-4xl mt-2">Available Vehicles :</h3>
         <VehicleList />
         <h3 className="font-semibold text-3xl text-end">TOTAL FARE: £0</h3>
-        
+        <Extra/>
       </div>
     </div>
   );
