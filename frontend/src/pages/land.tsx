@@ -22,7 +22,6 @@ export function Land() {
       <div className="relative">
         <Card />
       </div>
-      
     </div>
   );
 }
