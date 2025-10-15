@@ -1,7 +1,9 @@
 import VehicleList from "../constants";
 import BookingForm from "./bookingform";
+import { BenefitCard,} from "./benefitscard";
 import { Extra } from "./extra";
 import { InfoCard } from "./infocard";
+import { ExpCard } from "./expcard";
 
 export function Card() {
   return (
@@ -18,6 +20,8 @@ export function Card() {
         <h3 className="font-semibold text-3xl text-end">TOTAL FARE: £0</h3>
         <Extra/>
         <InfoCard/>
+        <ExpCard/>
+        <BenefitCard/>
       </div>
     </div>
   );
