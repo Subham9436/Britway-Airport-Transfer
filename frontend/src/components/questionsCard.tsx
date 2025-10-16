@@ -1,18 +1,19 @@
-export function BenefitCard() {
+export function QuestionCard() {
   const benefits = [
-    "Quick reservation",
-    "Booking priority",
-    "Track reservations",
-    "Past booking details",
-    "Free registration",
-    "Free Wi-Fi is available on the fleet",
+    "Live Chat Available",
+    "Support 24/7",
+    "Quick quotation",
+    "Book now and save up to 30%",
+    " No credit card fees",
+    "No hidden extras",
+    "Friendly staff",
   ];
 
   return (
-    <div className=" md:max-w-xl mx-auto mt-6 border border-gray-300 rounded-2xl shadow-md overflow-hidden">
+    <div className="   md:max-w-xl mx-auto mt-6 border border-gray-300 rounded-2xl shadow-md overflow-hidden">
       {/* Header */}
       <div className="bg-red-700 px-5 py-3 text-white text-lg sm:text-xl font-semibold text-center">
-        Member Benefits
+       Have Questions?
       </div>
 
       {/* Body */}
