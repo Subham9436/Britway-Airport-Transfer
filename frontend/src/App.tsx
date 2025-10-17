@@ -4,6 +4,7 @@ import { Land } from "./pages/land";
 function App() {
   return (
     <div>
+       
       <Land/>
     </div>
   );

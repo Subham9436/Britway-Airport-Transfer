@@ -5,7 +5,7 @@ import { Extra } from "./extra";
 import { InfoCard } from "./infocard";
 import { ExpCard } from "./expcard";
 import { QuestionCard } from "./questionsCard";
-import GoogleTagManager from "./googleTag";
+import { LocationMap } from "./googleMap";
 
 export function Card() {
   return (
@@ -25,7 +25,7 @@ export function Card() {
         </div>
 
         <div>
-          <GoogleTagManager gtmId="GTM-TCCS3L2" />
+          <LocationMap />
           <InfoCard />
           <ExpCard />
           <BenefitCard />
