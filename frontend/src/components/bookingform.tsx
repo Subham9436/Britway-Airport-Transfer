@@ -1,159 +1,177 @@
 import { useState } from "react";
+import { airports } from "../constants/constantValues";
 
 export default function BookingForm() {
   const [tripType, setTripType] = useState("airport-pickup");
   const [dropType, setDropType] = useState("local-drop");
 
   return (
-    <div>
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6 space-y-6 border border-gray-300">
-        {/* Pickup Section */}
-        <div>
-          <div className="flex gap-6 mb-4">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="pickupType"
-                value="airport-pickup"
-                checked={tripType === "airport-pickup"}
-                onChange={() => setTripType("airport-pickup")}
-              />
-              <span className="font-semibol">Airport Pickup</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="pickupType"
-                value="local-pickup"
-                checked={tripType === "local-pickup"}
-                onChange={() => setTripType("local-pickup")}
-              />
-              <span className="font-semibold">Local Address Pickup</span>
-            </label>
-          </div>
+    <div className="border border-gray-300  rounded-lg shadow-md overflow-hidden mb-6 p-2">
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Tabs */}
+        <div className="flex rounded-t-lg overflow-hidden text-sm font-semibold">
+          <button
+            onClick={() => setTripType("airport")}
+            className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
+              tripType === "airport"
+                ? "bg-red-700 text-white"
+                : "bg-gray-100 text-gray-700"
+            }`}
+          >
+            <input
+              type="radio"
+              name="tripType"
+              checked={tripType === "airport"}
+              onChange={() => setTripType("airport")}
+              className="mr-2"
+            />
+            Airport Pickup
+          </button>
 
-          <div className="border rounded p-3">
-            <label className="block font-medium mb-1">Pick Up *</label>
-            <select className="w-full border rounded p-2">
-              <option>--Select Airport--</option>
-              <option>Delhi Airport</option>
-              <option>Mumbai Airport</option>
-            </select>
-          </div>
+          <button
+            onClick={() => setTripType("local")}
+            className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
+              tripType === "local"
+                ? "bg-red-700 text-white"
+                : "bg-gray-100 text-gray-700"
+            }`}
+          >
+            <input
+              type="radio"
+              name="tripType"
+              checked={tripType === "local"}
+              onChange={() => setTripType("local")}
+              className="mr-2"
+            />
+            Local Address Pickup
+          </button>
         </div>
 
-        {/* Drop-off Section */}
-        <div>
-          <div className="flex gap-6 mb-4">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="dropType"
-                value="airport-drop"
-                checked={dropType === "airport-drop"}
-                onChange={() => setDropType("airport-drop")}
-              />
-              <span className="font-semibold">Airport Drop-off</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="dropType"
-                value="local-drop"
-                checked={dropType === "local-drop"}
-                onChange={() => setDropType("local-drop")}
-              />
-              <span className="font-semibold">Local Address Drop-off</span>
-            </label>
-          </div>
+        {/* Conditional Section */}
+        <div className="border border-red-700 rounded-b-lg p-4 bg-white">
+          {tripType === "airport" ? (
+            <div>
+              <label className="block font-semibold text-gray-700 mb-2">
+                PICK UP <span className="text-red-700">*</span>
+              </label>
+              <div className="flex items-center border rounded px-3 py-2 space-x-2">
+                {/* <MapPin size={18} className="text-gray-600" /> */}
+                <select className="w-full outline-none bg-transparent font-semibold text-gray-800">
+                  <option>--Select Airport--</option>
+                  {airports.map((airport, index) => (
+                    <option key={index}>{airport}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <label className="block font-semibold text-gray-700 mb-2">
+                PICK UP ADDRESS <span className="text-red-600">*</span>
+              </label>
+              <div className="flex items-center border rounded px-3 py-2 space-x-2">
+                {/* <MapPin size={18} className="text-gray-600" /> */}
+                <input
+                  type="text"
+                  placeholder="Enter Pickup Address"
+                  className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="w-full max-w-2xl mx-auto mt-4">
+        {/* Tabs */}
+        <div className="flex rounded-t-lg overflow-hidden text-sm font-semibold">
+          <button
+            onClick={() => setDropType("airport")}
+            className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
+              dropType === "airport"
+                ? "bg-red-700 text-white"
+                : "bg-gray-100 text-gray-700"
+            }`}
+          >
+            <input
+              type="radio"
+              name="dropType"
+              checked={dropType === "airport"}
+              onChange={() => setDropType("airport")}
+              className="mr-2"
+            />
+            Airport Drop-Off
+          </button>
 
-          <div className="border rounded p-3">
-            <label className="block font-medium mb-1">Drop-off *</label>
+          <button
+            onClick={() => setDropType("local")}
+            className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
+              dropType === "local"
+                ? "bg-red-700 text-white"
+                : "bg-gray-100 text-gray-700"
+            }`}
+          >
+            <input
+              type="radio"
+              name="dropType"
+              checked={dropType === "local"}
+              onChange={() => setDropType("local")}
+              className="mr-2"
+            />
+            Local Address Drop-Off
+          </button>
+        </div>
+
+        {/* Conditional Section */}
+        <div className="border border-red-700 rounded-b-lg p-4 bg-white">
+          {dropType === "airport" ? (
+            <div>
+              <label className="block font-semibold text-gray-700 mb-2">
+                PICK UP <span className="text-red-700">*</span>
+              </label>
+              <div className="flex items-center border rounded px-3 py-2 space-x-2">
+                {/* <MapPin size={18} className="text-gray-600" /> */}
+                <select className="w-full outline-none bg-transparent font-semibold text-gray-800">
+                  <option>--Select Airport--</option>
+                  {airports.map((airport, index) => (
+                    <option key={index}>{airport}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <label className="block font-semibold text-gray-700 mb-2">
+                PICK UP ADDRESS <span className="text-red-600">*</span>
+              </label>
+              <div className="flex items-center border rounded px-3 py-2 space-x-2">
+                {/* <MapPin size={18} className="text-gray-600" /> */}
+                <input
+                  type="text"
+                  placeholder="Enter Pickup Address"
+                  className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      {tripType === "airport" && <div>
+        <div className="border border-gray-300 rounded-lg mt-4 p-2">
+          <label className="block font-semibold text-gray-700 mb-2">
+            Flight Number <span className="text-red-600">*</span>
+          </label>
+          <div className="flex items-center border rounded px-3 py-2 space-x-2">
+            {/* <MapPin size={18} className="text-gray-600" /> */}
             <input
               type="text"
-              placeholder="--Enter a location--"
-              className="w-full border rounded p-2"
+              placeholder="Enter Pickup Address"
+              className="w-full outline-none bg-transparent font-semibold text-gray-800"
             />
           </div>
         </div>
-
-        {/* Flight Details */}
-        <div className="border rounded p-3">
-          <label className="block font-medium mb-1">Flight Number *</label>
-          <input
-            type="text"
-            placeholder="Enter flight number"
-            className="w-full border rounded p-2"
-          />
-        </div>
-
-        <div className="border rounded p-3">
-          <label className="block font-medium mb-1">Pick Up Wait Time *</label>
-          <select className="w-full border rounded p-2">
-            <option>--Select--</option>
-            <option>15 min</option>
-            <option>30 min</option>
-            <option>1 hr</option>
-          </select>
-        </div>
-
-        {/* Customer Requirement */}
-        <button className="text-red-600 font-semibold underline">
-          + Customer Requirement
-        </button>
-
-        {/* Pickup Date & Time */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="border rounded p-3">
-            <label className="block font-medium mb-1">Pickup Date *</label>
-            <input type="date" className="w-full border rounded p-2" />
-          </div>
-          <div className="border rounded p-3">
-            <label className="block font-medium mb-1">Pickup Time *</label>
-            <input type="time" className="w-full border rounded p-2" />
-          </div>
-        </div>
-
-        {/* Passenger Info */}
-        <div className="border rounded p-3">
-          <label className="block font-medium mb-1">
-            Passengers (Including Children) *
-          </label>
-          <select className="w-full border rounded p-2">
-            <option>--Select--</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4+</option>
-          </select>
-        </div>
-
-        <div className="border rounded p-3">
-          <label className="block font-medium mb-1">
-            Number of Check-in Luggage *
-          </label>
-          <select className="w-full border rounded p-2">
-            <option>--Select--</option>
-            <option>0</option>
-            <option>1</option>
-            <option>2+</option>
-          </select>
-        </div>
-
-        <div className="border rounded p-3">
-          <label className="block font-medium mb-1">
-            Number of Hand Luggage *
-          </label>
-          <select className="w-full border rounded p-2">
-            <option>--Select--</option>
-            <option>0</option>
-            <option>1</option>
-            <option>2+</option>
-          </select>
-        </div>
-      </div>
-      <div>
-        
+      </div>}
+      <div className="mt-4 p-2 border border-gray-300 rounded-lg text-center text-red-700 text-sm font-semibold">
+        <h3>+ Customer Requirement</h3>
       </div>
     </div>
   );
