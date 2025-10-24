@@ -1,7 +1,26 @@
 import { useState } from "react";
 import VehicleCard from "../components/vehicleCard";
 
-const vehicles = [
+export type features = {
+  label: React.ReactNode;
+  value: string;
+};
+
+interface Vehicle {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  passengers: number;
+  checkIn: number;
+  handLuggage: number;
+  features: features[];
+  oneWayPrice: number;
+  returnPrice: number;
+  discountPrice?: number;
+}
+
+export const vehicles: Vehicle[] = [
   {
     id: 1,
     name: "Saloon",
@@ -12,11 +31,67 @@ const vehicles = [
     checkIn: 2,
     handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
     oneWayPrice: 73,
     returnPrice: 146,
@@ -30,17 +105,73 @@ const vehicles = [
     description: "Hyundai Tucson, Toyota RAV4 or similar",
     passengers: 4,
     checkIn: 3,
-    handLuggage: 3,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 80,
+    returnPrice: 160,
+    discountPrice: 152,
   },
   {
     id: 3,
@@ -48,19 +179,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1745910927WhatsApp%20Image%202025-04-26%20at%2002.01.44_ac4e4364.jpg",
     description: "Mercedes E-Class, BMW 5 Series or similar",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 3,
+    checkIn: 2,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 85,
+    returnPrice: 170,
+    discountPrice: 162,
   },
   {
     id: 4,
@@ -69,18 +256,74 @@ const vehicles = [
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1745910980WhatsApp%20Image%202025-04-26%20at%2002.00.24_fa629e1d.jpg",
     description: "Ford Galaxy, VW Sharan or similar",
     passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    checkIn: 4,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 87,
+    returnPrice: 174,
+    discountPrice: 166,
   },
   {
     id: 5,
@@ -88,19 +331,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1745911043WhatsApp%20Image%202025-04-26%20at%2002.06.04_1e9ce7ca.jpg",
     description: "VW sharan",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 5,
+    checkIn: 4,
+    handLuggage: 4,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 95,
+    returnPrice: 190,
+    discountPrice: 181,
   },
   {
     id: 6,
@@ -110,17 +409,73 @@ const vehicles = [
     description: "Hyundai Tucson, Toyota RAV4 or similar",
     passengers: 4,
     checkIn: 3,
-    handLuggage: 3,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 95,
+    returnPrice: 190,
+    discountPrice: 181,
   },
   {
     id: 7,
@@ -129,18 +484,74 @@ const vehicles = [
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1745911383Lexus-ES-350.jpg",
     description: "Lexus LM, Tesla Model Y, Jaguar I-PACE or similar",
     passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    checkIn: 4,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 97,
+    returnPrice: 194,
+    discountPrice: 185,
   },
   {
     id: 8,
@@ -148,19 +559,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/17446303868%20seat.png",
     description: "VW Transporter, Vauxhall Vivaro or similar",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 7,
+    checkIn: 6,
+    handLuggage: 6,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 100,
+    returnPrice: 200,
+    discountPrice: 190,
   },
   {
     id: 9,
@@ -168,19 +635,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1748438835New-Indy_Colours_Agate-Black.jpg",
     description: "Ford Tourneo 9 Seater (Custom), Vito or V-Class",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 8,
+    checkIn: 8,
+    handLuggage: 8,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+       label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 120,
+    returnPrice: 240,
+    discountPrice: 228,
   },
   {
     id: 10,
@@ -188,19 +711,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/1745911135WhatsApp%20Image%202025-04-26%20at%2002.00.58_5baa6c32.jpg",
     description: "Mercedes V-Class, Vito or similar",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 8,
+    checkIn: 6,
+    handLuggage: 5,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 122,
+    returnPrice: 244,
+    discountPrice: 232,
   },
   {
     id: 11,
@@ -208,19 +787,75 @@ const vehicles = [
     image:
       "https://bookingform.britwayairporttransfer.co.uk/uploads/17484369122660_1_28367.jpg",
     description: "Mercedes S-class",
-    passengers: 4,
-    checkIn: 3,
-    handLuggage: 3,
+    passengers: 3,
+    checkIn: 2,
+    handLuggage: 2,
     features: [
-      { label: "🤝Meet & Greet", value: "Free" },
-      { label: "⏰Free Waiting Time*", value: "Free" },
-      { label: "🚪Door-to-door", value: "Free" },
-      { label: "🧳Luggage Assist", value: "Free" },
-      { label: "✈️Flight Tracking", value: "Free" },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/handshake.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Meet & Greet
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
+            Free Waiting Time*
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/opened-door-aperture.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Door-to-door
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/luggage (1).png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Luggage Assist
+          </span>
+        ),
+        value: "Free",
+      },
+      {
+        label: (
+          <span className="flex items-center gap-2">
+            <img
+              src="../img/departure.png"
+              alt="Meet & Greet"
+              className="w-5 h-5"
+            />
+            Flight Tracking
+          </span>
+        ),
+        value: "Free",
+      },
     ],
-    oneWayPrice: 90,
-    returnPrice: 180,
-    discountPrice: 170,
+    oneWayPrice: 125,
+    returnPrice: 250,
+    discountPrice: 238,
   },
 ];
 

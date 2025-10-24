@@ -1,4 +1,5 @@
 import React from "react";
+import type { features } from "../constants";
 
 interface Vehicle {
   id: number;
@@ -8,7 +9,7 @@ interface Vehicle {
   passengers: number;
   checkIn: number;
   handLuggage: number;
-  features: { label: string; value: string }[];
+  features: features[];
   oneWayPrice: number;
   returnPrice: number;
   discountPrice?: number;
@@ -24,56 +25,91 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
   const isSelected = selectedId === vehicle.id;
 
   return (
-    <div className="border border-gray-300  rounded-lg shadow-md overflow-hidden mb-6">
-      <div className="grid grid-cols-3 gap-4 p-4">
-        {/* Car Image */}
-        <div className="col-span-1 flex items-center justify-center">
-          <img src={vehicle.image} alt={vehicle.name} className=" size-72 object-contain" />
+    <div className="border border-gray-300 rounded-lg shadow-sm overflow-hidden mb-6 bg-white hover:shadow-md transition-all">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 items-center">
+        {/*  Vehicle Image */}
+        <div className="flex justify-center items-center">
+          <img
+            src={vehicle.image}
+            alt={vehicle.name}
+            className="w-68 h-48 md:w-64 md:h-64 object-contain"
+          />
         </div>
 
-        {/* Vehicle Details */}
-        <div className="col-span-2">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-bold uppercase">{vehicle.name}</h2>
+        {/*  Vehicle Details */}
+        <div className="md:col-span-2 flex flex-col justify-between h-full">
+          {/* Header: Title + Button */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-2">
+            <h2 className="text-lg font-bold uppercase text-gray-800 text-center sm:text-left">
+              {vehicle.name}
+            </h2>
             <button
-              className={`px-4 py-1 rounded text-white font-semibold ${
-                isSelected ? "bg-green-600" : "bg-red-600"
-              }`}
               onClick={() => onSelect(vehicle.id)}
-              style={{ cursor: "pointer" }}
+              className={`px-4 py-2 rounded font-semibold text-white w-full sm:w-auto text-center transition-all ${
+                isSelected
+                  ? "bg-green-600 hover:bg-green-700"
+                  : "bg-red-700 hover:bg-red-800"
+              }`}
             >
               {isSelected ? "Selected" : "Select Vehicle"}
             </button>
           </div>
 
-          <p className="text-gray-600 text-sm mb-2">{vehicle.description}</p>
+          {/* Description */}
+          <p className="text-gray-600 text-sm mb-3 font-semibold">{vehicle.description}</p>
 
           {/* Capacity */}
-          <div className="flex gap-3 text-sm mb-3">
-            <span>👥 {vehicle.passengers}</span>
-            <span>🧳 Max {vehicle.checkIn}</span>
-            <span>🎒 Max {vehicle.handLuggage}</span>
+          <div className="flex flex-wrap gap-4 text-sm mb-3 text-gray-700">
+            <span className="flex bg-gray-200 rounded p-2">
+              <img
+                src="../img/users-alt.png"
+                className="size-4 mr-1 mt-1"
+              ></img>{" "}
+              <h3>{vehicle.passengers} Passengers</h3>
+            </span>
+            <span className="flex bg-gray-200 rounded p-2">
+              <img
+                src="../img/luggage.png"
+                className="size-4 mr-1 mt-1"
+              ></img>{" "}
+              <h3>{vehicle.checkIn} Check-In</h3>
+            </span>
+            <span className="flex bg-gray-200 rounded p-2">
+              <img
+                src="../img/woman-bag.png"
+                className="size-4 mr-1 mt-1"
+              ></img>{" "}
+              <h3>{vehicle.handLuggage} Hand Luggage</h3>
+            </span>
           </div>
 
           {/* Features */}
-          <ul className="text-sm text-gray-700">
+          <ul className="text-sm text-gray-700 divide-y divide-gray-200 mb-3">
             {vehicle.features.map((f, i) => (
-              <li key={i} className="flex justify-between border-b py-1">
+              <li
+                key={i}
+                className="flex justify-between py-1 text-gray-800 text-sm"
+              >
                 <span>{f.label}</span>
-                <span className="text-red-600 font-semibold">{f.value}</span>
+                <span className="text-red-700 font-semibold">{f.value}</span>
               </li>
             ))}
           </ul>
 
           {/* Pricing */}
-          <div className="mt-3">
-            <div className="flex justify-between items-center  py-2">
-              <span>One way</span>
-              <span className="font-bold">£{vehicle.oneWayPrice}</span>
+          <div className="flex flex-col sm:flex-row gap-3 mt-2">
+            {/* One Way */}
+            <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">
+              <span className="font-medium text-gray-700">One Way</span>
+              <span className="font-bold text-gray-900">
+                £{vehicle.oneWayPrice}
+              </span>
             </div>
-            <div className="flex justify-between items-center border-t py-2">
-              <span>Return</span>
-              <span className="font-bold">
+
+            {/* Return */}
+            <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">
+              <span className="font-medium text-gray-700">Return</span>
+              <span className="font-bold text-gray-900">
                 {vehicle.discountPrice ? (
                   <>
                     <span className="line-through text-gray-400 mr-2">

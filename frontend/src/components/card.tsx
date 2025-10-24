@@ -15,9 +15,11 @@ export function Card() {
         transfer. If you have any questions, feel free to use the chat button or
         give us a call. For more complex quotes, please use our Contact Form.
       </div>
-      <div className="md:flex">
+      <div className="md:flex mt-4 justify-between gap-6">
         <div>
-          <BookingForm />
+          <div>
+            <BookingForm />
+          </div>
           <h3 className="text-4xl mt-2">Available Vehicles :</h3>
           <VehicleList />
           <h3 className="font-semibold text-3xl text-end">TOTAL FARE: £0</h3>
