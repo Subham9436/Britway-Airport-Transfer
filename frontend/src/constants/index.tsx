@@ -1,5 +1,7 @@
 import { useState } from "react";
 import VehicleCard from "../components/vehicleCard";
+import { Tooltip } from "../components/tooltip";
+import { Info } from "lucide-react";
 
 export type features = {
   label: React.ReactNode;
@@ -33,62 +35,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -109,62 +125,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -185,62 +215,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -261,62 +305,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -337,62 +395,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -413,62 +485,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -489,62 +575,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -565,62 +665,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -640,63 +754,77 @@ export const vehicles: Vehicle[] = [
     handLuggage: 8,
     features: [
       {
-       label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+        label: (
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -717,62 +845,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
@@ -793,62 +935,76 @@ export const vehicles: Vehicle[] = [
     features: [
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/handshake.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Meet & Greet
-          </span>
+          <Tooltip text="Driver will be waiting for you in the arrivals hall with a sign showing your name.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/handshake.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Meet & Greet
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img src="../img/time.png" alt="Meet & Greet" className="w-5 h-5" />
-            Free Waiting Time*
-          </span>
+          <Tooltip text="Includes 30 minutes of free waiting time for airport pickups and 15 minutes for others.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/time.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Free Waiting Time*
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/opened-door-aperture.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Door-to-door
-          </span>
+          <Tooltip text="Driver will take you from/to the accommodation address you provide on the booking.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/opened-door-aperture.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Door-to-door
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/luggage (1).png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Luggage Assist
-          </span>
+          <Tooltip text="The driver will help you with the luggage.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/luggage (1).png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Luggage Assist
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },
       {
         label: (
-          <span className="flex items-center gap-2">
-            <img
-              src="../img/departure.png"
-              alt="Meet & Greet"
-              className="w-5 h-5"
-            />
-            Flight Tracking
-          </span>
+          <Tooltip text="The driver monitors your flight to ensure timely meet and greet service.">
+            <span className="flex items-center gap-2">
+              <img
+                src="../img/departure.png"
+                alt="Meet & Greet"
+                className="w-5 h-5"
+              />
+              Flight Tracking
+            </span>
+          </Tooltip>
         ),
         value: "Free",
       },

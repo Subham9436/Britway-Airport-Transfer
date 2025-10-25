@@ -1,6 +1,7 @@
 import React from "react";
 import type { features } from "../constants";
 
+
 interface Vehicle {
   id: number;
   name: string;
@@ -45,7 +46,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
             </h2>
             <button
               onClick={() => onSelect(vehicle.id)}
-              className={`px-4 py-2 rounded font-semibold text-white w-full sm:w-auto text-center transition-all ${
+              className={`px-4 py-2 rounded font-semibold text-white w-full sm:w-auto text-center transition-all cursor-pointer ${
                 isSelected
                   ? "bg-green-600 hover:bg-green-700"
                   : "bg-red-700 hover:bg-red-800"
@@ -56,7 +57,9 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm mb-3 font-semibold">{vehicle.description}</p>
+          <p className="text-gray-600 text-sm mb-3 font-semibold">
+            {vehicle.description}
+          </p>
 
           {/* Capacity */}
           <div className="flex flex-wrap gap-4 text-sm mb-3 text-gray-700">
@@ -68,10 +71,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
               <h3>{vehicle.passengers} Passengers</h3>
             </span>
             <span className="flex bg-gray-200 rounded p-2">
-              <img
-                src="../img/luggage.png"
-                className="size-4 mr-1 mt-1"
-              ></img>{" "}
+              <img src="../img/luggage.png" className="size-4 mr-1 mt-1"></img>{" "}
               <h3>{vehicle.checkIn} Check-In</h3>
             </span>
             <span className="flex bg-gray-200 rounded p-2">
@@ -84,7 +84,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
           </div>
 
           {/* Features */}
-          <ul className="text-sm text-gray-700 divide-y divide-gray-200 mb-3">
+          <ul className="text-sm text-gray-700 divide-y divide-gray-200 mb-3 cursor-pointer">
             {vehicle.features.map((f, i) => (
               <li
                 key={i}

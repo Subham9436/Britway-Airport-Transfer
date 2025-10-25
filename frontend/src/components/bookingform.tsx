@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { airports } from "../constants/constantValues";
 import { Briefcase, Calendar, Clock, ShoppingBag, Users } from "lucide-react";
+import { CustomDropdown } from "./customDropdown";
 
 export default function BookingForm() {
-  const [tripType, setTripType] = useState("airport-pickup");
-  const [dropType, setDropType] = useState("local-drop");
+  const [tripType, setTripType] = useState("airport");
+  const [dropType, setDropType] = useState("local");
   const [customerRequirement, setCustomerRequirement] = useState(
     "customer-requirement"
   );
@@ -13,12 +14,15 @@ export default function BookingForm() {
   const [passengers, setPassengers] = useState("");
   const [checkInLuggage, setCheckInLuggage] = useState("");
   const [handLuggage, setHandLuggage] = useState("");
+  const [pickupAirport, setPickupAirport] = useState("");
+  const [dropAirport, setDropAirport] = useState("");
 
   const passengerOptions = ["1", "2", "3", "4", "5+"];
   const luggageOptions = ["0", "1", "2", "3", "4+"];
-  const waitTimes = Array.from({ length: 25 }, (_, i) => i * 5); // [0, 5, 10, ... 120]
+  const waitTimes = Array.from({ length: 25 }, (_, i) => i * 5);
   const [selectedWait, setSelectedWait] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const handleSelect = (value: number) => {
     setSelectedWait(value);
@@ -70,54 +74,28 @@ export default function BookingForm() {
         {/* Conditional Section */}
         <div className="border border-red-700 rounded-b-lg p-4 bg-white">
           {tripType === "airport" ? (
-            <div>
-              <label className="block font-semibold text-gray-700 mb-2">
-                PICK UP <span className="text-red-700">*</span>
-              </label>
-
-              <div className="flex items-center border border-gray-300 rounded px-3 py-2 space-x-2 bg-gray-50">
-                {/* Location icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6 text-gray-600"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
-
-                {/* Airport dropdown */}
-                <select className="w-full outline-none bg-transparent font-semibold text-gray-800 cursor-pointer appearance-none">
-                  <option value="">--Select Airport--</option>
-                  {airports.map((airport, index) => (
-                    <option
-                      key={index}
-                      value={airport}
-                      className="bg-white text-gray-800 hover:bg-red-700 hover:text-white focus:bg-red-700 focus:text-white"
-                    >
-                      {airport}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+            <CustomDropdown
+              label="PICK UP"
+              value={pickupAirport}
+              options={airports}
+              dropdownKey="pickupAirport"
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              onSelect={(val) => setPickupAirport(val)}
+              icon={
+                <img
+                  src="../img/location (1).png"
+                  alt="plane"
+                  className="w-5 h-5"
+                />
+              }
+            />
           ) : (
             <div>
               <label className="block font-semibold text-gray-700 mb-2">
                 PICK UP ADDRESS <span className="text-red-600">*</span>
               </label>
-              <div className="flex items-center border border-gray-300 rounded px-3 py-2 space-x-2 bg-gray-50">
+              <div className="flex items-center rounded px-3 py-2 space-x-2 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -148,7 +126,7 @@ export default function BookingForm() {
           )}
         </div>
       </div>
-      <div className="w-full  mt-4">
+      <div className="w-full  mt-2">
         {/* Tabs */}
         <div className="flex rounded-t-lg overflow-hidden text-sm font-semibold">
           <button
@@ -191,44 +169,28 @@ export default function BookingForm() {
         {/* Conditional Section */}
         <div className="border border-red-700 rounded-b-lg p-4 bg-white">
           {dropType === "airport" ? (
-            <div>
-              <label className="block font-semibold text-gray-700 mb-2">
-                PICK UP <span className="text-red-700">*</span>
-              </label>
-              <div className="flex items-center border rounded px-3 py-2 space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
-                <select className="w-full outline-none bg-transparent font-semibold text-gray-800">
-                  <option>--Select Airport--</option>
-                  {airports.map((airport, index) => (
-                    <option key={index}>{airport}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
+            <CustomDropdown
+              label="DROP OFF"
+              value={dropAirport}
+              options={airports}
+              dropdownKey="dropAirport"
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              onSelect={(val) => setDropAirport(val)}
+              icon={
+                <img
+                  src="../img/location (1).png"
+                  alt="plane"
+                  className="w-5 h-5"
+                />
+              }
+            />
           ) : (
             <div>
               <label className="block font-semibold text-gray-700 mb-2">
                 DROP OFF <span className="text-red-600">*</span>
               </label>
-              <div className="flex items-center border rounded px-3 py-2 space-x-2">
+              <div className="flex items-center  rounded  py-2 space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -250,7 +212,7 @@ export default function BookingForm() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Enter Pickup Address"
+                  placeholder="Enter Drop-Off Address"
                   className="w-full outline-none bg-transparent font-semibold text-gray-800"
                 />
               </div>
@@ -264,15 +226,15 @@ export default function BookingForm() {
             <label className="block font-semibold text-gray-700 mb-2">
               Flight Number <span className="text-red-600">*</span>
             </label>
-            <div className="flex items-center border rounded px-3 py-2 space-x-2">
+            <div className="flex items-center  rounded px-3 py-2 space-x-2">
               <img
                 src="https://bookingform.britwayairporttransfer.co.uk/assets/front/images/flight.svg"
                 className="size-6"
               ></img>
               <input
                 type="text"
-                placeholder="Enter Pickup Address"
-                className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                placeholder="Enter Flight Number"
+                className="w-full outline-none bg-transparent font-semibold text-black"
               />
             </div>
           </div>
@@ -302,19 +264,17 @@ export default function BookingForm() {
             <div className="relative">
               {/* Select box */}
               <div
-                className="flex items-center justify-between border rounded px-3 py-2 bg-gray-50 cursor-pointer"
+                className="flex items-center justify-between rounded  py-2 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
                   <img
                     src="https://bookingform.britwayairporttransfer.co.uk/assets/front/images/carbon_time.svg"
                     alt="clock"
                     className="size-6"
                   />
                   <span className="font-semibold text-gray-800">
-                    {selectedWait !== null
-                      ? `${selectedWait} min`
-                      : "Select wait time"}
+                    {selectedWait !== null ? `--Select--` : "Select wait time"}
                   </span>
                 </div>
                 <svg
@@ -413,7 +373,7 @@ export default function BookingForm() {
                 type="date"
                 value={pickupDate}
                 onChange={(e) => setPickupDate(e.target.value)}
-                className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
+                className="flex-1  focus:ring-0 text-gray-800 font-medium"
               />
             </div>
           </div>
@@ -437,69 +397,44 @@ export default function BookingForm() {
 
         {/* Passengers */}
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
-          <label className="text-sm font-semibold text-gray-700">
-            PASSENGERS (INCLUDING CHILDREN){" "}
-            <span className="text-red-600">*</span>
-          </label>
-          <div className="flex items-center gap-2 mt-1">
-            <Users className="w-5 h-5 text-gray-600" />
-            <select
-              value={passengers}
-              onChange={(e) => setPassengers(e.target.value)}
-              className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
-            >
-              <option value="">--Select--</option>
-              {passengerOptions.map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Passengers (Including Children)"
+            value={passengers}
+            options={passengerOptions}
+            dropdownKey="passengers"
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+            onSelect={(val) => setPassengers(val)}
+            icon={<Users className="w-5 h-5 text-gray-600" />}
+          />
         </div>
 
         {/* Check-in Luggage */}
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
-          <label className="text-sm font-semibold text-gray-700">
-            NUMBER OF CHECK-IN LUGGAGE <span className="text-red-600">*</span>
-          </label>
-          <div className="flex items-center gap-2 mt-1">
-            <Briefcase className="w-5 h-5 text-gray-600" />
-            <select
-              value={checkInLuggage}
-              onChange={(e) => setCheckInLuggage(e.target.value)}
-              className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
-            >
-              <option value="">--Select--</option>
-              {luggageOptions.map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Check-in Luggage"
+            value={checkInLuggage}
+            options={luggageOptions}
+            dropdownKey="checkInLuggage"
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+            onSelect={(val) => setCheckInLuggage(val)}
+            icon={<Briefcase className="w-5 h-5 text-gray-600" />}
+          />
         </div>
 
         {/* Hand Luggage */}
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
-          <label className="text-sm font-semibold text-gray-700">
-            NUMBER OF HAND LUGGAGE <span className="text-red-600">*</span>
-          </label>
-          <div className="flex items-center gap-2 mt-1">
-            <ShoppingBag className="w-5 h-5 text-gray-600" />
-            <select
-              value={handLuggage}
-              onChange={(e) => setHandLuggage(e.target.value)}
-              className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
-            >
-              <option value="">--Select--</option>
-              {luggageOptions.map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </div>
+          <CustomDropdown
+            label="Hand Luggage"
+            value={handLuggage}
+            options={luggageOptions}
+            dropdownKey="handLuggage"
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+            onSelect={(val) => setHandLuggage(val)}
+            icon={<ShoppingBag className="w-5 h-5 text-gray-600" />}
+          />
         </div>
       </div>
     </div>

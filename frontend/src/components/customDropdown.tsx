@@ -1,11 +1,13 @@
+import React from "react";
+
 interface CustomDropdownProps {
   label: string;
-  value: string | number;
-  options: (string | number)[];
+  value: string;
+  options: string[];
   dropdownKey: string;
   openDropdown: string | null;
   setOpenDropdown: React.Dispatch<React.SetStateAction<string | null>>;
-  onSelect: (val: string | number) => void;
+  onSelect: (val: string) => void;
   icon?: React.ReactNode;
 }
 
@@ -22,18 +24,21 @@ export function CustomDropdown({
   const isOpen = openDropdown === dropdownKey;
 
   return (
-    <div className="flex flex-col border border-gray-300 rounded-md p-3 relative">
-      <label className="text-sm font-semibold text-gray-700">{label}</label>
+    <div className="flex flex-col  rounded-md  ">
+      <label className=" font-semibold text-gray-700">{label} <span className="text-red-600">*</span></label>
+
+      {/* Dropdown button */}
       <div
-        className="flex items-center justify-between mt-1 border rounded px-3 py-2 bg-gray-50 cursor-pointer"
+        className="flex items-center justify-between mt-1 rounded cursor-pointer select-none"
         onClick={() => setOpenDropdown(isOpen ? null : dropdownKey)}
       >
         <div className="flex items-center gap-2">
           {icon}
-          <span className="font-medium text-gray-800">
-            {value || `Select ${label.toLowerCase()}`}
+          <span className="font-semibold  truncate">
+            {value || `--Select--`}
           </span>
         </div>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -44,16 +49,21 @@ export function CustomDropdown({
             isOpen ? "rotate-180" : ""
           }`}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </div>
 
+      {/* Dropdown options */}
       {isOpen && (
-        <ul className="absolute z-10 mt-1 w-full border rounded bg-white shadow-lg max-h-60 overflow-y-auto">
+        <ul className="absolute z-10 mt-16 w-152 border rounded bg-white shadow-lg max-h-60 overflow-y-auto">
           {options.map((opt) => (
             <li
               key={opt}
-              className="px-4 py-2 cursor-pointer hover:bg-red-700 hover:text-white"
+              className="px-4 py-2 text-sm cursor-pointer hover:bg-red-700 hover:text-white font-semibold"
               onClick={() => {
                 onSelect(opt);
                 setOpenDropdown(null);
