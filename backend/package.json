@@ -5,26 +5,27 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "dev": "nodemon --watch src --exec node --loader ts-node/esm src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
-    "@types/node": "^24.5.2",
-    "nodemon": "^3.1.10",
+    "@types/node": "^24.9.1",
+    "nodemon": "^3.1.0",
+    "prisma": "^6.18.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/dotenv": "^6.1.1",
+    "@prisma/client": "^6.18.0",
     "@types/express": "^5.0.4",
-    "@types/morgan": "^1.9.10",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "morgan": "^1.10.1"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
   }
 }

@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -13,3 +13,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Booking {
+  id                  Int      @id @default(autoincrement())
+  tripType            String
+  dropType            String
+  pickupLocation      String
+  dropoffAddress      String
+  flightNumber        String
+  pickupWaitTime      String
+  customerRequirement String?
+  pickupDate          DateTime
+  pickupTime          String
+  passengers          Int
+  checkinLuggage      Int
+  handLuggage         Int
+  createdAt           DateTime @default(now())
+}
+
