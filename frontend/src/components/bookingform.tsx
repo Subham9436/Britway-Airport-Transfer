@@ -2,6 +2,7 @@ import { useState } from "react";
 import { airports } from "../constants/constantValues";
 import { Briefcase, Calendar, Clock, ShoppingBag, Users } from "lucide-react";
 import { CustomDropdown } from "./customDropdown";
+import { useBooking } from "../context/bookingContext";
 
 export default function BookingForm() {
   const [tripType, setTripType] = useState("airport");
@@ -9,20 +10,16 @@ export default function BookingForm() {
   const [customerRequirement, setCustomerRequirement] = useState(
     "customer-requirement"
   );
-  const [pickupDate, setPickupDate] = useState("");
-  const [pickupTime, setPickupTime] = useState("");
-  const [passengers, setPassengers] = useState("");
+
   const [checkInLuggage, setCheckInLuggage] = useState("");
   const [handLuggage, setHandLuggage] = useState("");
-  const [pickupAirport, setPickupAirport] = useState("");
-  const [dropAirport, setDropAirport] = useState("");
-
   const passengerOptions = ["1", "2", "3", "4", "5+"];
   const luggageOptions = ["0", "1", "2", "3", "4+"];
   const waitTimes = Array.from({ length: 25 }, (_, i) => i * 5);
   const [selectedWait, setSelectedWait] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { booking, updateBookingField } = useBooking();
 
   const handleSelect = (value: number) => {
     setSelectedWait(value);
@@ -76,12 +73,12 @@ export default function BookingForm() {
           {tripType === "airport" ? (
             <CustomDropdown
               label="PICK UP"
-              value={pickupAirport}
+              value={booking.pickupAirport}
               options={airports}
               dropdownKey="pickupAirport"
               openDropdown={openDropdown}
               setOpenDropdown={setOpenDropdown}
-              onSelect={(val) => setPickupAirport(val)}
+              onSelect={(val) => updateBookingField("pickupAirport", val)}
               icon={
                 <img
                   src="../img/location (1).png"
@@ -171,12 +168,12 @@ export default function BookingForm() {
           {dropType === "airport" ? (
             <CustomDropdown
               label="DROP OFF"
-              value={dropAirport}
+              value={booking.dropAirport}
               options={airports}
               dropdownKey="dropAirport"
               openDropdown={openDropdown}
               setOpenDropdown={setOpenDropdown}
-              onSelect={(val) => setDropAirport(val)}
+              onSelect={(val) => updateBookingField("dropAirport", val)}
               icon={
                 <img
                   src="../img/location (1).png"
@@ -371,9 +368,11 @@ export default function BookingForm() {
               <Calendar className="w-5 h-5 text-gray-600" />
               <input
                 type="date"
-                value={pickupDate}
-                onChange={(e) => setPickupDate(e.target.value)}
-                className="flex-1  focus:ring-0 text-gray-800 font-medium"
+                value={booking.pickupDate}
+                onChange={(e) =>
+                  updateBookingField("pickupDate", e.target.value)
+                }
+                className="flex-1 focus:ring-0 text-gray-800 font-medium"
               />
             </div>
           </div>
@@ -387,8 +386,10 @@ export default function BookingForm() {
               <Clock className="w-5 h-5 text-gray-600" />
               <input
                 type="time"
-                value={pickupTime}
-                onChange={(e) => setPickupTime(e.target.value)}
+                value={booking.pickupTime}
+                onChange={(e) =>
+                  updateBookingField("pickupTime", e.target.value)
+                }
                 className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
               />
             </div>
@@ -398,13 +399,13 @@ export default function BookingForm() {
         {/* Passengers */}
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
           <CustomDropdown
-            label="Passengers (Including Children)"
-            value={passengers}
+            label="Passengers(Including Children)"
+            value={booking.passengers}
             options={passengerOptions}
             dropdownKey="passengers"
             openDropdown={openDropdown}
             setOpenDropdown={setOpenDropdown}
-            onSelect={(val) => setPassengers(val)}
+            onSelect={(val) => updateBookingField("passengers", val)}
             icon={<Users className="w-5 h-5 text-gray-600" />}
           />
         </div>

@@ -1,21 +1,4 @@
-const details = [
-  {
-    icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/car.svg",
-    label: "Vehicle",
-  },
-  {
-    icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/pasangers.svg",
-    label: "0 Passengers",
-  },
-  {
-    icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/miles.svg",
-    label: "0km / 0miles",
-  },
-  {
-    icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/clarity_clock-line.svg",
-    label: "0hr 00min",
-  },
-];
+
 const features = [
   "+500000 passengers transported",
   "Instant confirmation",
@@ -74,4 +57,4 @@ const airports = [
   "London Biggin Hill Airport Ltd",
 ];
 
-export { details, features, paymentLogos, airports };
+export {  features, paymentLogos, airports };
