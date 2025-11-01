@@ -3,8 +3,7 @@ import prisma from "../prisma/client.js";
 
 const router = express.Router();
 
-// POST: Create Booking
-router.post("/", async (req, res) => {
+router.post("/newUser", async (req, res) => {
   try {
     const {
       tripType,
@@ -19,6 +18,11 @@ router.post("/", async (req, res) => {
       passengers,
       checkinLuggage,
       handLuggage,
+      fullName,
+      email,
+      countryCode,
+      phoneNumber,
+      agreedTerms,
     } = req.body;
 
     const booking = await prisma.booking.create({
@@ -35,6 +39,12 @@ router.post("/", async (req, res) => {
         passengers,
         checkinLuggage,
         handLuggage,
+        // Passenger details
+        fullName,
+        email,
+        countryCode,
+        phoneNumber,
+        agreedTerms,
       },
     });
 
@@ -46,7 +56,7 @@ router.post("/", async (req, res) => {
 });
 
 // GET: All Bookings
-router.get("/", async (_, res) => {
+router.get("/allUsers", async (_, res) => {
   const bookings = await prisma.booking.findMany();
   res.json(bookings);
 });

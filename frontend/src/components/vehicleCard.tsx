@@ -1,6 +1,6 @@
 import React from "react";
 import type { features } from "../constants";
-
+import { useVehicle } from "../context/vehicleContext";
 
 interface Vehicle {
   id: number;
@@ -18,12 +18,11 @@ interface Vehicle {
 
 interface Props {
   vehicle: Vehicle;
-  onSelect: (id: number) => void;
-  selectedId: number | null;
 }
 
-const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
-  const isSelected = selectedId === vehicle.id;
+const VehicleCard: React.FC<Props> = ({ vehicle }) => {
+  const { selectedVehicle, setSelectedVehicle } = useVehicle();
+  const isSelected = selectedVehicle?.id === vehicle.id;
 
   return (
     <div className="border border-gray-300 rounded-lg shadow-sm overflow-hidden mb-6 bg-white hover:shadow-md transition-all">
@@ -37,16 +36,16 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
           />
         </div>
 
-        {/*  Vehicle Details */}
+        {/* Vehicle Details */}
         <div className="md:col-span-2 flex flex-col justify-between h-full">
-          {/* Header: Title + Button */}
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-2">
             <h2 className="text-lg font-bold uppercase text-gray-800 text-center sm:text-left">
               {vehicle.name}
             </h2>
+
             <button
-              onClick={() => onSelect(vehicle.id)}
-              className={`px-4 py-2 rounded font-semibold text-white w-full sm:w-auto text-center transition-all cursor-pointer ${
+              onClick={() => setSelectedVehicle(vehicle)}
+              className={`px-4 py-2 rounded font-semibold text-white w-full sm:w-auto transition-all ${
                 isSelected
                   ? "bg-green-600 hover:bg-green-700"
                   : "bg-red-700 hover:bg-red-800"
@@ -56,7 +55,6 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
             </button>
           </div>
 
-          {/* Description */}
           <p className="text-gray-600 text-sm mb-3 font-semibold">
             {vehicle.description}
           </p>
@@ -64,21 +62,15 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
           {/* Capacity */}
           <div className="flex flex-wrap gap-4 text-sm mb-3 text-gray-700">
             <span className="flex bg-gray-200 rounded p-2">
-              <img
-                src="../img/users-alt.png"
-                className="size-4 mr-1 mt-1"
-              ></img>{" "}
+              <img src="../img/users-alt.png" className="size-4 mr-1 mt-1" />
               <h3>{vehicle.passengers} Passengers</h3>
             </span>
             <span className="flex bg-gray-200 rounded p-2">
-              <img src="../img/luggage.png" className="size-4 mr-1 mt-1"></img>{" "}
+              <img src="../img/luggage.png" className="size-4 mr-1 mt-1" />
               <h3>{vehicle.checkIn} Check-In</h3>
             </span>
             <span className="flex bg-gray-200 rounded p-2">
-              <img
-                src="../img/woman-bag.png"
-                className="size-4 mr-1 mt-1"
-              ></img>{" "}
+              <img src="../img/woman-bag.png" className="size-4 mr-1 mt-1" />
               <h3>{vehicle.handLuggage} Hand Luggage</h3>
             </span>
           </div>
@@ -86,10 +78,7 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
           {/* Features */}
           <ul className="text-sm text-gray-700 divide-y divide-gray-200 mb-3 cursor-pointer">
             {vehicle.features.map((f, i) => (
-              <li
-                key={i}
-                className="flex justify-between py-1 text-gray-800 text-sm"
-              >
+              <li key={i} className="flex justify-between py-1 text-gray-800 text-sm">
                 <span>{f.label}</span>
                 <span className="text-red-700 font-semibold">{f.value}</span>
               </li>
@@ -98,15 +87,11 @@ const VehicleCard: React.FC<Props> = ({ vehicle, onSelect, selectedId }) => {
 
           {/* Pricing */}
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
-            {/* One Way */}
             <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">
               <span className="font-medium text-gray-700">One Way</span>
-              <span className="font-bold text-gray-900">
-                £{vehicle.oneWayPrice}
-              </span>
+              <span className="font-bold text-gray-900">£{vehicle.oneWayPrice}</span>
             </div>
 
-            {/* Return */}
             <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">
               <span className="font-medium text-gray-700">Return</span>
               <span className="font-bold text-gray-900">

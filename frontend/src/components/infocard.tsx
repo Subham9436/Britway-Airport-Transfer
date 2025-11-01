@@ -1,26 +1,31 @@
 import { useBooking } from "../context/bookingContext";
-
+import { useVehicle } from "../context/vehicleContext";
 
 export function InfoCard() {
   const { booking } = useBooking();
+   const { selectedVehicle } = useVehicle();
 
+  
   // dynamically compute details based on booking context
   const details = [
     {
       icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/car.svg",
-      label: "Vehicle", // you can later link this to vehicle type if added
+      label: selectedVehicle ? selectedVehicle.name : "No Vehicle Selected",
     },
     {
       icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/pasangers.svg",
       label: booking.passengers
-        ? `${booking.passengers} Passenger${booking.passengers === "1" ? "" : "s"}`
+        ? `${booking.passengers} Passenger${
+            booking.passengers === "1" ? "" : "s"
+          }`
         : "0 Passengers",
     },
     {
       icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/miles.svg",
-      label: booking.pickupAirport && booking.dropAirport
-        ? `${booking.pickupAirport} → ${booking.dropAirport}`
-        : "0km / 0miles", // can later be computed from location API
+      label:
+        booking.pickupAirport && booking.dropAirport
+          ? `${booking.pickupAirport} → ${booking.dropAirport}`
+          : "0km / 0miles", // can later be computed from location API
     },
     {
       icon: "https://bookingform.britwayairporttransfer.co.uk/assets/front/images/clarity_clock-line.svg",
@@ -50,8 +55,16 @@ export function InfoCard() {
             stroke="currentColor"
             className="w-6 h-6 sm:w-7 sm:h-7"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
           </svg>
           <h3 className="text-white text-sm sm:text-base font-medium">
             {booking.pickupAirport
@@ -70,8 +83,16 @@ export function InfoCard() {
             stroke="currentColor"
             className="w-6 h-6 sm:w-7 sm:h-7"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+            />
           </svg>
           <h3 className="text-white text-sm sm:text-base font-medium">
             {booking.dropAirport
@@ -113,7 +134,13 @@ export function InfoCard() {
       <div className="bg-black px-4 sm:px-6 py-5 space-y-3 sm:space-y-4 rounded-b-2xl">
         {details.map((item, index) => (
           <div key={index} className="flex items-center gap-3">
-            <img src={item.icon} alt={item.label} className="w-6 h-6 sm:w-8 sm:h-8" />
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+              <img
+                src={item.icon}
+                alt={item.label}
+                className="w-6 h-6 sm:w-7 sm:h-7"
+              />
+            </div>
             <h3 className="text-white text-sm sm:text-base">{item.label}</h3>
           </div>
         ))}

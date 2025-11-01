@@ -435,6 +435,7 @@ export default function BookingForm() {
             setOpenDropdown={setOpenDropdown}
             onSelect={(val) => setHandLuggage(val)}
             icon={<ShoppingBag className="w-5 h-5 text-gray-600" />}
+            
           />
         </div>
       </div>
