@@ -11,14 +11,21 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "@types/axios": "^0.9.36",
+    "@types/country-list": "^2.1.4",
     "@types/dotenv": "^6.1.1",
     "@types/react-gtm-module": "^2.0.4",
     "@types/tailwindcss": "^3.0.11",
+    "axios": "^1.13.1",
+    "country-flag-icons": "^1.5.21",
+    "country-list": "^2.4.1",
     "dotenv": "^17.2.3",
+    "libphonenumber-js": "^1.12.25",
     "lucide-react": "^0.546.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-gtm-module": "^2.0.11",
+    "react-hot-toast": "^2.6.0",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

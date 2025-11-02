@@ -1,4 +1,24 @@
+import { useState } from "react";
+import { countryCodes } from "./countryCode";
+import toast from "react-hot-toast";
+import { useSubmitBooking } from "../context/postContext";
+
 export function Extra() {
+  const [countryCode, setCountryCode] = useState(countryCodes[0].dial);
+  const { submitBooking } = useSubmitBooking();
+
+  const handleSubmit = async () => {
+  try {
+    toast.loading("Submitting...");
+    await submitBooking();
+    toast.dismiss();
+    toast.success("Booking Created ");
+  } catch (err) {
+    toast.dismiss();
+    toast.error("Failed to create booking ");
+  }
+};
+
   return (
     <div>
       <div className=" border border-gray-300  rounded-lg shadow-md overflow-hidden p-4 mt-12">
@@ -79,24 +99,19 @@ export function Extra() {
 
             <div className="flex border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
               <select
-                id="countryCode"
-                name="countryCode"
-                className="bg-gray-50 text-gray-900 text-sm px-2 py-2 border-r border-gray-300 focus:outline-none focus:ring-0"
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+                className=" rounded p-2"
               >
-                <option value="+1">🇺🇸 +1</option>
-                <option value="+91" selected>
-                  🇮🇳 +91
-                </option>
-                <option value="+44">🇬🇧 +44</option>
-                <option value="+81">🇯🇵 +81</option>
-                <option value="+61">🇦🇺 +61</option>
-                <option value="+49">🇩🇪 +49</option>
-                <option value="+33">🇫🇷 +33</option>
-                <option value="+39">🇮🇹 +39</option>
-                <option value="+86">🇨🇳 +86</option>
-                <option value="+971">🇦🇪 +971</option>
+                {countryCodes.map((c) => (
+                  <option key={c.code} value={c.dial}>
+                    {String.fromCodePoint(
+                      ...[...c.code].map((ch) => ch.charCodeAt(0) + 127397)
+                    )}{" "}
+                    {c.dial}
+                  </option>
+                ))}
               </select>
-
               <input
                 type="tel"
                 id="phone"
@@ -118,12 +133,13 @@ export function Extra() {
             </a>
           </h3>
         </div>
-        <div
-          className="mt-8 flex justify-center border p-4 m-4 bg-red-700 text-white"
+        <button
+          onClick={handleSubmit}
           style={{ cursor: "pointer" }}
+          className="mt-8 w-full border p-4 px-6 bg-red-700 text-white text-sm md:text-base font-semibold rounded-lg"
         >
-          <button>Review and Make Payment</button>
-        </div>
+          Review and Make Payment
+        </button>
       </div>
       <div className=" border border-gray-300  rounded-lg shadow-md overflow-hidden p-4 mt-12 mb-12">
         <div className="border bg-red-100 border-red-300">

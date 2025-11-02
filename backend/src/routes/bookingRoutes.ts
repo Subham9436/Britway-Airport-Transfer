@@ -3,7 +3,7 @@ import prisma from "../prisma/client.js";
 
 const router = express.Router();
 
-router.post("/newUser", async (req, res) => {
+router.post("/User", async (req, res) => {
   try {
     const {
       tripType,
