@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Booking" ALTER COLUMN "passengers" SET DATA TYPE TEXT,
+ALTER COLUMN "checkinLuggage" SET DATA TYPE TEXT,
+ALTER COLUMN "handLuggage" SET DATA TYPE TEXT;

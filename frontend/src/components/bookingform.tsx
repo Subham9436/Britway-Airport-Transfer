@@ -5,26 +5,15 @@ import { CustomDropdown } from "./customDropdown";
 import { useBooking } from "../context/bookingContext";
 
 export default function BookingForm() {
-  const [tripType, setTripType] = useState("airport");
-  const [dropType, setDropType] = useState("local");
+  const { booking, updateBookingField } = useBooking();
   const [customerRequirement, setCustomerRequirement] = useState(
     "customer-requirement"
   );
-
-  const [checkInLuggage, setCheckInLuggage] = useState("");
-  const [handLuggage, setHandLuggage] = useState("");
   const passengerOptions = ["1", "2", "3", "4", "5+"];
   const luggageOptions = ["0", "1", "2", "3", "4+"];
   const waitTimes = Array.from({ length: 25 }, (_, i) => i * 5);
-  const [selectedWait, setSelectedWait] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const { booking, updateBookingField } = useBooking();
-
-  const handleSelect = (value: number) => {
-    setSelectedWait(value);
-    setIsOpen(false);
-  };
 
   return (
     <div className="border border-gray-300  rounded-lg shadow-md overflow-hidden mb-6 p-4">
@@ -32,9 +21,9 @@ export default function BookingForm() {
         {/* Tabs */}
         <div className="flex rounded-t-lg overflow-hidden text-sm font-semibold">
           <button
-            onClick={() => setTripType("airport")}
+            onClick={() => updateBookingField("tripType", "airport")}
             className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
-              tripType === "airport"
+              booking.tripType === "airport"
                 ? "bg-red-700 text-white"
                 : "bg-gray-100 text-gray-700"
             }`}
@@ -42,17 +31,17 @@ export default function BookingForm() {
             <input
               type="radio"
               name="tripType"
-              checked={tripType === "airport"}
-              onChange={() => setTripType("airport")}
+              checked={booking.tripType === "airport"}
+              onChange={() => updateBookingField("tripType", "airport")}
               className="mr-2"
             />
             Airport Pickup
           </button>
 
           <button
-            onClick={() => setTripType("local")}
+            onClick={() => updateBookingField("tripType", "local")}
             className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
-              tripType === "local"
+              booking.tripType === "local"
                 ? "bg-red-700 text-white"
                 : "bg-gray-100 text-gray-700"
             }`}
@@ -60,8 +49,8 @@ export default function BookingForm() {
             <input
               type="radio"
               name="tripType"
-              checked={tripType === "local"}
-              onChange={() => setTripType("local")}
+              checked={booking.tripType === "local"}
+              onChange={() => updateBookingField("tripType", "local")}
               className="mr-2"
             />
             Local Address Pickup
@@ -70,10 +59,10 @@ export default function BookingForm() {
 
         {/* Conditional Section */}
         <div className="border border-red-700 rounded-b-lg p-4 bg-white">
-          {tripType === "airport" ? (
+          {booking.tripType === "airport" ? (
             <CustomDropdown
               label="PICK UP"
-              value={booking.pickupAirport}
+              value={booking.pickupAirport ?? ""}
               options={airports}
               dropdownKey="pickupAirport"
               openDropdown={openDropdown}
@@ -117,6 +106,10 @@ export default function BookingForm() {
                   type="text"
                   placeholder="Enter Pickup Address"
                   className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                  value={booking.pickupAddress}
+                  onChange={(e) =>
+                    updateBookingField("pickupAddress", e.target.value)
+                  }
                 />
               </div>
             </div>
@@ -127,9 +120,9 @@ export default function BookingForm() {
         {/* Tabs */}
         <div className="flex rounded-t-lg overflow-hidden text-sm font-semibold">
           <button
-            onClick={() => setDropType("airport")}
+            onClick={() => updateBookingField("dropType", "airport")}
             className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
-              dropType === "airport"
+              booking.dropType === "airport"
                 ? "bg-red-700 text-white"
                 : "bg-gray-100 text-gray-700"
             }`}
@@ -137,17 +130,17 @@ export default function BookingForm() {
             <input
               type="radio"
               name="dropType"
-              checked={dropType === "airport"}
-              onChange={() => setDropType("airport")}
+              checked={booking.dropType === "airport"}
+              onChange={() => updateBookingField("dropType", "airport")}
               className="mr-2"
             />
             Airport Drop-Off
           </button>
 
           <button
-            onClick={() => setDropType("local")}
+            onClick={() => updateBookingField("dropType", "local")}
             className={`flex-1 px-4 py-3 text-left rounded-t-lg  transition-all duration-200 ${
-              dropType === "local"
+              booking.dropType === "local"
                 ? "bg-red-700 text-white"
                 : "bg-gray-100 text-gray-700"
             }`}
@@ -155,8 +148,8 @@ export default function BookingForm() {
             <input
               type="radio"
               name="dropType"
-              checked={dropType === "local"}
-              onChange={() => setDropType("local")}
+              checked={booking.dropType === "local"}
+              onChange={() => updateBookingField("dropType", "local")}
               className="mr-2"
             />
             Local Address Drop-Off
@@ -165,10 +158,10 @@ export default function BookingForm() {
 
         {/* Conditional Section */}
         <div className="border border-red-700 rounded-b-lg p-4 bg-white">
-          {dropType === "airport" ? (
+          {booking.dropType === "airport" ? (
             <CustomDropdown
               label="DROP OFF"
-              value={booking.dropAirport}
+              value={booking.dropAirport ?? ""}
               options={airports}
               dropdownKey="dropAirport"
               openDropdown={openDropdown}
@@ -211,13 +204,17 @@ export default function BookingForm() {
                   type="text"
                   placeholder="Enter Drop-Off Address"
                   className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                  value={booking.dropoffAddress}
+                  onChange={(e) =>
+                    updateBookingField("dropoffAddress", e.target.value)
+                  }
                 />
               </div>
             </div>
           )}
         </div>
       </div>
-      {tripType === "airport" && (
+      {booking.tripType === "airport" && (
         <div>
           <div className="border border-gray-300 rounded-lg mt-4 p-2">
             <label className="block font-semibold text-gray-700 mb-2">
@@ -231,13 +228,17 @@ export default function BookingForm() {
               <input
                 type="text"
                 placeholder="Enter Flight Number"
+                value={booking.flightNumber}
+                onChange={(e) =>
+                  updateBookingField("flightNumber", e.target.value)
+                }
                 className="w-full outline-none bg-transparent font-semibold text-black"
               />
             </div>
           </div>
         </div>
       )}
-      {tripType === "airport" && (
+      {booking.tripType === "airport" && (
         <div>
           <div className="border border-gray-300 rounded-lg mt-4 p-3 bg-white shadow-sm">
             <label className="font-semibold text-gray-700 mb-2 flex items-center">
@@ -259,9 +260,8 @@ export default function BookingForm() {
             </label>
 
             <div className="relative">
-              {/* Select box */}
               <div
-                className="flex items-center justify-between rounded  py-2 cursor-pointer"
+                className="flex items-center justify-between rounded py-2 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <div className="flex items-center space-x-2">
@@ -271,9 +271,12 @@ export default function BookingForm() {
                     className="size-6"
                   />
                   <span className="font-semibold text-gray-800">
-                    {selectedWait !== null ? `--Select--` : "Select wait time"}
+                    {booking.pickupWaitTime
+                      ? `${booking.pickupWaitTime} min`
+                      : "--Select--"}
                   </span>
                 </div>
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -292,17 +295,19 @@ export default function BookingForm() {
                 </svg>
               </div>
 
-              {/* Dropdown menu */}
               {isOpen && (
                 <ul className="absolute z-10 mt-2 w-full border rounded bg-white shadow-lg max-h-60 overflow-y-auto">
                   {waitTimes.map((min) => (
                     <li
                       key={min}
-                      onClick={() => handleSelect(min)}
+                      onClick={() => {
+                        updateBookingField("pickupWaitTime", min.toString());
+                        setIsOpen(false);
+                      }}
                       className={`px-4 py-2 cursor-pointer font-medium ${
-                        selectedWait === min
-                          ? null
-                          : "hover:bg-red-700 text-gray-800 hover:text-white "
+                        booking.pickupWaitTime === min.toString()
+                          ? "bg-red-700 text-white"
+                          : "hover:bg-red-700 hover:text-white text-gray-800"
                       }`}
                     >
                       {min} min
@@ -351,6 +356,10 @@ export default function BookingForm() {
                 rows={4}
                 placeholder="Please provide any additional information about your trip, special requests, additional phone number or pickup instructions..."
                 className="w-full outline-none bg-transparent font-semibold text-gray-800"
+                value={booking.customerRequirement || ""}
+                onChange={(e) =>
+                  updateBookingField("customerRequirement", e.target.value)
+                }
               ></textarea>
             </div>
           </div>
@@ -414,12 +423,12 @@ export default function BookingForm() {
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
           <CustomDropdown
             label="Check-in Luggage"
-            value={checkInLuggage}
+            value={booking.checkInLuggage}
             options={luggageOptions}
             dropdownKey="checkInLuggage"
             openDropdown={openDropdown}
             setOpenDropdown={setOpenDropdown}
-            onSelect={(val) => setCheckInLuggage(val)}
+            onSelect={(val) => updateBookingField("checkInLuggage", val)}
             icon={<Briefcase className="w-5 h-5 text-gray-600" />}
           />
         </div>
@@ -428,14 +437,13 @@ export default function BookingForm() {
         <div className="flex flex-col border border-gray-300 rounded-md p-3">
           <CustomDropdown
             label="Hand Luggage"
-            value={handLuggage}
+            value={booking.handLuggage}
             options={luggageOptions}
             dropdownKey="handLuggage"
             openDropdown={openDropdown}
             setOpenDropdown={setOpenDropdown}
-            onSelect={(val) => setHandLuggage(val)}
+            onSelect={(val) => updateBookingField("handLuggage", val)}
             icon={<ShoppingBag className="w-5 h-5 text-gray-600" />}
-            
           />
         </div>
       </div>

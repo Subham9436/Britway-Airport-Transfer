@@ -18,6 +18,8 @@ interface Vehicle {
 
 interface Props {
   vehicle: Vehicle;
+  onSelect: React.Dispatch<React.SetStateAction<number | null>>;
+  selectedId: number | null;
 }
 
 const VehicleCard: React.FC<Props> = ({ vehicle }) => {
@@ -78,7 +80,10 @@ const VehicleCard: React.FC<Props> = ({ vehicle }) => {
           {/* Features */}
           <ul className="text-sm text-gray-700 divide-y divide-gray-200 mb-3 cursor-pointer">
             {vehicle.features.map((f, i) => (
-              <li key={i} className="flex justify-between py-1 text-gray-800 text-sm">
+              <li
+                key={i}
+                className="flex justify-between py-1 text-gray-800 text-sm"
+              >
                 <span>{f.label}</span>
                 <span className="text-red-700 font-semibold">{f.value}</span>
               </li>
@@ -89,7 +94,9 @@ const VehicleCard: React.FC<Props> = ({ vehicle }) => {
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
             <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">
               <span className="font-medium text-gray-700">One Way</span>
-              <span className="font-bold text-gray-900">£{vehicle.oneWayPrice}</span>
+              <span className="font-bold text-gray-900">
+                £{vehicle.oneWayPrice}
+              </span>
             </div>
 
             <div className="flex justify-between items-center flex-1 border rounded p-3 bg-gray-50">

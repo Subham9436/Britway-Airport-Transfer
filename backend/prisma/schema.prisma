@@ -18,22 +18,28 @@ model Booking {
   id                  Int      @id @default(autoincrement())
   tripType            String
   dropType            String
-  pickupLocation      String
-  dropoffAddress      String
-  flightNumber        String
+  // location fields
+  pickupAirport       String?
+  dropAirport         String?
+  pickupAddress       String?
+  dropoffAddress      String?
+  flightNumber        String?
   pickupWaitTime      String
   customerRequirement String?
   pickupDate          DateTime
   pickupTime          String
-  passengers          Int
-  checkinLuggage      Int
-  handLuggage         Int
+  passengers          String
+  checkInLuggage      String
+  handLuggage         String
   createdAt           DateTime @default(now())
-
-   fullName     String?
-  email        String?
-  countryCode  String?
-  phoneNumber  String?
-  agreedTerms  Boolean? @default(false)
+  // passenger fields
+  fullName     String
+  email        String
+  countryCode  String
+  phoneNumber  String
+  agreedTerms  Boolean @default(false)
+  // vehicle selection
+  vehicleId    Int?
 }
+
 

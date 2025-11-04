@@ -1,7 +1,7 @@
 import { useState } from "react";
 import VehicleCard from "../components/vehicleCard";
 import { Tooltip } from "../components/tooltip";
-import { Info } from "lucide-react";
+
 
 export type features = {
   label: React.ReactNode;

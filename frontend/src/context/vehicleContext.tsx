@@ -16,22 +16,31 @@ export interface VehicleType {
 interface VehicleContextProps {
   selectedVehicle: VehicleType | null;
   setSelectedVehicle: (v: VehicleType | null) => void;
+  resetVehicle: () => void;
 }
 
 const VehicleContext = createContext<VehicleContextProps>({
   selectedVehicle: null,
   setSelectedVehicle: () => {},
+  resetVehicle: () => {},
 });
 
 export const VehicleProvider = ({ children }: { children: ReactNode }) => {
-  const [selectedVehicle, setSelectedVehicle] = useState<VehicleType | null>(null);
+  const [selectedVehicle, setSelectedVehicle] = useState<VehicleType | null>(
+    null
+  );
+
+  const resetVehicle = () => {
+    setSelectedVehicle(null);
+  };
 
   return (
-    <VehicleContext.Provider value={{ selectedVehicle, setSelectedVehicle }}>
+    <VehicleContext.Provider
+      value={{ selectedVehicle, setSelectedVehicle, resetVehicle }}
+    >
       {children}
     </VehicleContext.Provider>
   );
 };
 
 export const useVehicle = () => useContext(VehicleContext);
-

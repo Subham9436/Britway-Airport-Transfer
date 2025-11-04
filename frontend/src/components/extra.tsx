@@ -1,23 +1,37 @@
-import { useState } from "react";
 import { countryCodes } from "./countryCode";
 import toast from "react-hot-toast";
 import { useSubmitBooking } from "../context/postContext";
+import { useBooking } from "../context/bookingContext";
+import { useVehicle } from "../context/vehicleContext";
 
 export function Extra() {
-  const [countryCode, setCountryCode] = useState(countryCodes[0].dial);
   const { submitBooking } = useSubmitBooking();
+  const { booking, updateBookingField, resetBooking } = useBooking();
+  const { selectedVehicle, resetVehicle } = useVehicle();
 
   const handleSubmit = async () => {
-  try {
-    toast.loading("Submitting...");
-    await submitBooking();
-    toast.dismiss();
-    toast.success("Booking Created ");
-  } catch (err) {
-    toast.dismiss();
-    toast.error("Failed to create booking ");
-  }
-};
+    if (!booking.fullName.trim()) return toast.error("Full Name is required");
+    if (!booking.email.trim()) return toast.error("Email is required");
+    if (!booking.phoneNumber.trim())
+      return toast.error("Phone Number is required");
+    if (booking.passengers.trim() === "")
+      return toast.error("Passengers field required");
+    if (!booking.agreedTerms) return toast.error("You must agree to Terms");
+    if (!selectedVehicle) return toast.error("Vehicle Not Selected");
+
+    const loading = toast.loading("Submitting...");
+
+    try {
+      await submitBooking();
+      toast.dismiss(loading);
+      toast.success("Booking Created");
+      resetBooking();
+      resetVehicle();
+    } catch (err) {
+      toast.dismiss(loading);
+      toast.error("Failed to create booking");
+    }
+  };
 
   return (
     <div>
@@ -78,6 +92,8 @@ export function Extra() {
               type="text"
               placeholder="Enter your full name"
               required
+              value={booking.fullName}
+              onChange={(e) => updateBookingField("fullName", e.target.value)}
               className="w-full border rounded p-2 border-gray-300"
             ></input>
           </div>
@@ -89,6 +105,8 @@ export function Extra() {
               type="text"
               placeholder="Enter your email address"
               required
+              value={booking.email}
+              onChange={(e) => updateBookingField("email", e.target.value)}
               className="w-full border rounded p-2 border-gray-300"
             ></input>
           </div>
@@ -99,8 +117,10 @@ export function Extra() {
 
             <div className="flex border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
               <select
-                value={countryCode}
-                onChange={(e) => setCountryCode(e.target.value)}
+                value={booking.countryCode}
+                onChange={(e) =>
+                  updateBookingField("countryCode", e.target.value)
+                }
                 className=" rounded p-2"
               >
                 {countryCodes.map((c) => (
@@ -116,6 +136,10 @@ export function Extra() {
                 type="tel"
                 id="phone"
                 name="phone"
+                value={booking.phoneNumber}
+                onChange={(e) =>
+                  updateBookingField("phoneNumber", e.target.value)
+                }
                 placeholder="Enter phone number"
                 className="flex-1 px-3 py-2 text-sm focus:outline-none"
               />
@@ -123,7 +147,14 @@ export function Extra() {
           </div>
         </div>
         <div className="flex items-center mt-4 gap-2 p-2">
-          <input type="checkbox" className="size-5"></input>
+          <input
+            type="checkbox"
+            className="size-5"
+            checked={booking.agreedTerms}
+            onChange={(e) =>
+              updateBookingField("agreedTerms", e.target.checked)
+            }
+          ></input>
           <h3 className="flex">
             I agree with the{" "}
             <a href="https://britwayairporttransfer.co.uk/tc/?_gl=1*1d0ap5t*_gcl_au*MTkyNDM4MzQyOS4xNzU4ODEyNjU3">
