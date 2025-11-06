@@ -1,12 +1,12 @@
 export function Navbar() {
   return (
     <div className="bg-black flex flex-col items-center sm:flex-row justify-between">
-      <div className="text-white size-24 flex-center ">
+      <div className="text-white size-24 flex justify-center items-center ">
         <a href="https://britwayairporttransfer.co.uk/">
           <img src="./img/Britway-Logo-200px.png" />
         </a>
       </div>
-      <div className="flex-center mb-4">
+      <div className="flex justify-center items-center mb-4">
         <div className="flex ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
