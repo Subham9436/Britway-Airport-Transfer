@@ -381,7 +381,7 @@ export default function BookingForm() {
                 onChange={(e) =>
                   updateBookingField("pickupDate", e.target.value)
                 }
-                className="flex-1 focus:ring-0 text-gray-800 font-medium"
+                className="flex-1 focus:ring-0 text-gray-800 font-medium cursor-pointer"
               />
             </div>
           </div>
@@ -399,7 +399,7 @@ export default function BookingForm() {
                 onChange={(e) =>
                   updateBookingField("pickupTime", e.target.value)
                 }
-                className="flex-1 border-none focus:ring-0 text-gray-800 font-medium"
+                className="flex-1 border-none focus:ring-0 text-gray-800 font-medium cursor-pointer"
               />
             </div>
           </div>

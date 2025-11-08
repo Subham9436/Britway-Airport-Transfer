@@ -1,7 +1,9 @@
 import { Card } from "../components/card";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
+import OnlineStatusFloating from "../components/OnlineStatusFloating";
 import { Reviews } from "../components/reviews";
+import WhatsappFloating from "../components/WhatsappFloating";
 
 export function Land() {
   return (
@@ -40,6 +42,8 @@ export function Land() {
       <div>
         <Footer />
       </div>
+      <OnlineStatusFloating />
+      <WhatsappFloating />
     </div>
   );
 }
